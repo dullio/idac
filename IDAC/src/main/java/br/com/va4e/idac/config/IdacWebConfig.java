@@ -10,6 +10,10 @@ import org.springframework.context.annotation.Configuration;
  *Novas configurações e sobrescrever as automáticas que forem necessárias
  */
 @Configuration
-public class IdacWebConfig {
+public class IdacWebConfig  {
+
+
+
+
 
 }
