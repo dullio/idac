@@ -19,6 +19,7 @@ public class IdacApplication {
 	 * Incluir Segurança (autenticação e autorização)
 	 * Definir layout e criar os fragmentos (header, footer, menu, etc...)
 	 * Usar HikariCP
+	 * Usar Versionamento
 	 * Atualizar i18n mensagens
 	 * Modelos, anotação hibernate/jpa
 	 * Sincronização com Contatos do Gmail.
