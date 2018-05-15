@@ -75,7 +75,32 @@ public class MemberEmail implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="member_id")
 	private Member member;
+	
+	
+	@NotNull
+	private boolean isDefault;
+	
+	
+	@NotNull
+	private boolean isActive;
 
+
+	public boolean isDefault() {
+		return isDefault;
+	}
+
+	public void setDefault(boolean isDefault) {
+		this.isDefault = isDefault;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+	
 
 
 

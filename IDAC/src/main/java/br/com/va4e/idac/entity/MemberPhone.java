@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "member_phone")
+//@Serializable(version=12345L)
 public class MemberPhone implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -31,6 +32,72 @@ public class MemberPhone implements Serializable {
 
 	private int type;
 	
+	@Override
+	public String toString() {
+		return "MemberPhone [id=" + id + ", ddd=" + ddd + ", phone=" + phone + ", extension=" + extension + ", note="
+				+ note + ", type=" + type + ", member=" + member + "]";
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getDdd() {
+		return ddd;
+	}
+
+	public void setDdd(String ddd) {
+		this.ddd = ddd;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getExtension() {
+		return extension;
+	}
+
+	public void setExtension(String extension) {
+		this.extension = extension;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name="member_id")

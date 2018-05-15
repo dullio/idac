@@ -41,7 +41,7 @@ public class Member implements Serializable {
     private String lastName;
 
     
-
+    @Pattern(regexp = "[A-Za-z]*", message = "must contain only letters")
     private String userName;
     
     
@@ -56,8 +56,20 @@ public class Member implements Serializable {
     
     private String note;
     
+    @NotNull
+    private boolean isActive;
     
-    public String getNote() {
+    public boolean isActive() {
+		return isActive;
+	}
+
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
+
+	public String getNote() {
 		return note;
 	}
 
