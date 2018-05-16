@@ -8,7 +8,8 @@ public class IndexController {
 	
 	
 	
-	 @RequestMapping({"/", "/index"})
+	// @RequestMapping({"/", "/index"})
+	 @RequestMapping("/")
 	public String getIndex(){
 		
 		return "index";
