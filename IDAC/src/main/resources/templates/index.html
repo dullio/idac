@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <meta charset="UTF-8" />
 <title th:text="#{index.page.title}">Page Title</title>
@@ -24,13 +24,13 @@
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#">Home</a></li>
 			<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown" href=";members">Membros<span class="caret"></span></a>
+				data-toggle="dropdown" href=";member">Membros<span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="/members/list">Listar</a></li>
-					<li><a href="/members/search">Pesquisar</a></li>
-					<li><a href="/members/edit">Editar</a></li>
-					<li><a href="/members/new">Novo</a></li>
-					<li><a href="/members/delete">Apagar</a></li>
+					<li><a href="/member/list">Listar</a></li>
+					<li><a href="/member/search">Pesquisar</a></li>
+					<li><a href="/member/edit">Editar</a></li>
+					<li><a href="/member/new">Novo</a></li>
+					<li><a href="/member/delete">Apagar</a></li>
 				</ul></li>
 			<li><a href="#">Menu 2</a></li>
 			<li><a href="#">Menu 3</a></li>
@@ -42,5 +42,6 @@
 			<h3>Bem vindo ao gestor IDAC!</h3>
 		</div>
 	</div>
+	<div th:replace="~{footer :: copy}"></div>
 </body>
 </html>

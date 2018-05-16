@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8" />
+<title th:text="#{member.list.page.title}">Page Title</title>
+
+<link th:href="@{static/css/bootstrap-3.3.4-dist/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+
+<script th:src="@{static/js/jquery-2.1.4.min.js}"></script>
+
+
+<script th:src="{static/css/bootstrap-3.3.4-dist/js/bootstrap.min.js}"></script>
+
+    <link th:href="@{static/css/custom.css}" rel="stylesheet" media="screen"/>
+</head>
+
+<body>
+	<div class="container">
+
+			
+			<div class="well"><h3 th:text="#{member.list.page.title}">Text</h3></div>
+
+
+		<div class="row">
+			<div class="col-sm-4">Nome</div>
+			<div class="col-sm-2">Telefone</div>
+			<div class="col-sm-3">email</div>
+			<div class="col-sm-2">grupos</div>
+			<div class="col-sm-1">ações</div>
+		</div>
+	</div>
+
+</body>
+</html>
