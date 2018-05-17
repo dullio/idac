@@ -16,32 +16,13 @@
 
 </head>
 <body>
-
-	<div class="jumbotron">
-		<h1 th:text="#{index.page.wellcomeMessage}">Default wellcome</h1>
-	</div>
-	<div class="container">
-		<ul class="nav nav-tabs">
-			<li class="active"><a href="#">Home</a></li>
-			<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown" href=";member">Membros<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="/member/list">Listar</a></li>
-					<li><a href="/member/search">Pesquisar</a></li>
-					<li><a href="/member/edit">Editar</a></li>
-					<li><a href="/member/new">Novo</a></li>
-					<li><a href="/member/delete">Apagar</a></li>
-				</ul></li>
-			<li><a href="#">Menu 2</a></li>
-			<li><a href="#">Menu 3</a></li>
-		</ul>
-	</div>
-
+<div th:replace="header :: header"></div>
+	
 	<div class="container">
 		<div class="jumbotron">
 			<h3>Bem vindo ao gestor IDAC!</h3>
 		</div>
 	</div>
-	<div th:replace="~{footer :: copy}"></div>
+	<div th:replace="footer :: copy"></div>
 </body>
 </html>

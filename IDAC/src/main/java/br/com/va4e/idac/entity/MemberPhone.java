@@ -16,6 +16,20 @@ import javax.validation.constraints.NotNull;
 //@Serializable(version=12345L)
 public class MemberPhone implements Serializable {
 
+	public MemberPhone(String ddd, String phone, String extension, String note, int type, Member member) {
+		super();
+		this.ddd = ddd;
+		this.phone = phone;
+		this.extension = extension;
+		this.note = note;
+		this.type = type;
+		this.member = member;
+	}
+
+	public MemberPhone() {
+		super();
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	@Id

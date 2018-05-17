@@ -20,7 +20,20 @@ import org.hibernate.validator.constraints.Email;
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"email", "member_id"}), name = "member_email")
 public class MemberEmail implements Serializable {
 
-    public String getEmail() {
+    public MemberEmail(String email, int type, Member member, boolean isDefault, boolean isActive) {
+		super();
+		this.email = email;
+		this.type = type;
+		this.member = member;
+		this.isDefault = isDefault;
+		this.isActive = isActive;
+	}
+
+	public MemberEmail() {
+		super();
+	}
+
+	public String getEmail() {
 		return email;
 	}
 

@@ -4,24 +4,29 @@
 
 <meta charset="UTF-8" />
 <title th:text="#{member.list.page.title}">Page Title</title>
+<!-- 
+<link th:href="@{/css/bootstrap-3.3.4-dist/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
 
-<link th:href="@{static/css/bootstrap-3.3.4-dist/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
-
-<script th:src="@{static/js/jquery-2.1.4.min.js}"></script>
+<script th:src="@{/js/jquery-2.1.4.min.js}"></script>
 
 
-<script th:src="{static/css/bootstrap-3.3.4-dist/js/bootstrap.min.js}"></script>
+<script th:src="{/css/bootstrap-3.3.4-dist/js/bootstrap.min.js}"></script>
 
-    <link th:href="@{static/css/custom.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/custom.css}" rel="stylesheet" media="screen"/>
+     -->
+    
+        <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+
+<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    
 </head>
 
 <body>
+<div th:replace="header :: header"></div>
 	<div class="container">
-
-			
-			<div class="well"><h3 th:text="#{member.list.page.title}">Text</h3></div>
-
-
+		<div class="col-sm-12"><h3 th:text="#{member.list.page.title}">Text</h3></div>
 		<div class="row">
 			<div class="col-sm-4">Nome</div>
 			<div class="col-sm-2">Telefone</div>
@@ -29,7 +34,22 @@
 			<div class="col-sm-2">grupos</div>
 			<div class="col-sm-1">ações</div>
 		</div>
+		<div class="row">
+		<div class="col-sm-12"><a href="/member/form" class="btn btn-default" role="button">Novo</a></div>
+		
+		
+		</div>
 	</div>
+
+	
+<!-- 
+TODO:
+Incluir paginação da listagem 
+incluir filtros e buscas
+Controle de acesso/mnt/1d9b609d-eedf-422b-83b2-0d8263d2c9a7/samba/desktop/Planejamento Pessoal 2018.ods
+
+ -->
+	<div th:replace="footer :: copy"></div>
 
 </body>
 </html>

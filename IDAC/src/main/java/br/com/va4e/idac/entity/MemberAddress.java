@@ -15,6 +15,24 @@ import javax.validation.constraints.NotNull;
 @Table( name = "member_address")
 public class MemberAddress implements Serializable{
 	
+	public MemberAddress() {
+		super();
+	}
+
+	public MemberAddress(String street, String number, String complement, String cep, String city, String state,
+			String country, int type, Member member) {
+		super();
+		this.street = street;
+		this.number = number;
+		this.complement = complement;
+		this.cep = cep;
+		this.city = city;
+		this.state = state;
+		this.country = country;
+		this.type = type;
+		this.member = member;
+	}
+
 	private static final long serialVersionUID = 1L;
 
     @Id

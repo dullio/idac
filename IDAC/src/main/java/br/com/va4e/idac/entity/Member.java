@@ -20,7 +20,32 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"firstName", "lastName"}), name = "member")
 public class Member implements Serializable {
-    /**
+	
+    public Member(String firstName, String lastName, String userName, String cpf, String rg, String gender, String note,
+			boolean isActive, Date birthday, List<MemberEmail> emails, List<MemberPhone> phones,
+			List<MemberAddress> addresses) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.cpf = cpf;
+		this.rg = rg;
+		this.gender = gender;
+		this.note = note;
+		this.isActive = isActive;
+		this.birthday = birthday;
+		this.emails = emails;
+		this.phones = phones;
+		this.addresses = addresses;
+	}
+
+
+	public Member() {
+		super();
+	}
+
+
+	/**
      * Default value included to remove warning. Remove or modify at will. *
      */
     private static final long serialVersionUID = 1L;
