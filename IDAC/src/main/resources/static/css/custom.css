@@ -113,3 +113,21 @@ img {
     font-weight: 200;
     line-height: 30px;
 }
+
+ul#messages li {
+display: block;
+width: 80%;
+margin: 5px auto;
+text-align: center;
+padding: 5px;
+border-radius: 5px;
+}
+
+ul#messages li.info {
+background: #7f7;
+}
+
+ul#messages li.error {
+background: #d00;
+color: white;
+}

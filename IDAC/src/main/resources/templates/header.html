@@ -2,18 +2,21 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+	rel="stylesheet" media="screen" />
 
 <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>
 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  </head>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<script src="../static/js/custom.js" th:src="@{/js/custom.js}"></script>
+</head>
 <body>
 
 	<div th:fragment="header" align="center">
-		<div class="jumbotron">
-			
-		</div>
+		<div class="jumbotron"></div>
 		<div class="container">
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#">Home</a></li>
@@ -30,6 +33,15 @@
 				<li><a href="#">Menu 2</a></li>
 				<li><a href="#">Menu 3</a></li>
 			</ul>
+			<ul id="messages"
+				th:with="notifyMessages=${session[T(br.com.va4e.idac.services.NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY]}">
+				<li th:each="msg : ${notifyMessages}" th:text="${msg.text}"
+					th:class="${#strings.toLowerCase(msg.type)}"></li>
+				<span th:if="${notifyMessages}" th:remove="all"
+					th:text="${session.remove(
+          T(br.com.va4e.idac.services.NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY)}"></span>
+
+			</ul>
 		</div>
 
 	</div>
@@ -37,3 +49,4 @@
 </body>
 
 </html>
+

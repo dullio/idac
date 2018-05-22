@@ -1,6 +1,8 @@
 package br.com.va4e.idac.config;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * @author dullio
@@ -10,6 +12,8 @@ import org.springframework.context.annotation.Configuration;
  *Novas configurações e sobrescrever as automáticas que forem necessárias
  */
 @Configuration
+@ComponentScan(basePackages="br.com.va4e.idac")
+@EnableJpaRepositories(basePackages = "br.com.va4e.idac.repository")
 public class IdacWebConfig  {
 
 

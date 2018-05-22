@@ -18,15 +18,17 @@ public class IdacApplication {
 	/* TODO: 
 	 * Incluir Segurança (autenticação e autorização)
 	 * Definir layout e criar os fragmentos (header, footer, menu, etc...)
-	 * Usar HikariCP
+	 * Usar HikariCP - ok
 	 * Usar Versionamento
+	 * Auditoria
+	 * dataCriacao dataAtuaizacao e ultimo usuário
 	 * Atualizar i18n mensagens
 	 * Modelos, anotação hibernate/jpa
 	 * Sincronização com Contatos do Gmail.
 	 * Login com Facebook e/ou G+
 	 * CRUD e repositorios para modelos
 	 * Validação dos formulários
-	 * Customização das páginas de erro!
+	 * Customização das páginas de erro! Whitelabel Error Page
 	 * Log em arquivo e console unico (Log4J e AOP)
 	 * Definir perfis para os diferentes tipos de base e servidores
 	 * MySQL/Derby/TomCat/Spring
