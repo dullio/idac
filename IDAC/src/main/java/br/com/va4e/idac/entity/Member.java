@@ -84,6 +84,20 @@ public class Member implements Serializable {
     @NotNull
     private boolean isActive;
     
+	private Date birthday;
+    
+    @OneToMany(mappedBy="member")
+    //@JsonBackReference
+    private List<MemberEmail> emails;
+
+    @OneToMany(mappedBy="member")
+    //@JsonBackReference
+    private List<MemberPhone> phones;
+    
+	@OneToMany(mappedBy="member")
+	//@JsonBackReference
+    private List<MemberAddress> addresses;
+    
     public boolean isActive() {
 		return isActive;
 	}
@@ -114,13 +128,7 @@ public class Member implements Serializable {
 	}
 
 
-	private Date birthday;
-    
-    @OneToMany(mappedBy="member")
-    private List<MemberEmail> emails;
 
-    @OneToMany(mappedBy="member")
-    private List<MemberPhone> phones;
 
     public Date getBirthday() {
 		return birthday;
@@ -139,12 +147,7 @@ public class Member implements Serializable {
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
-	}
-
-
-	@OneToMany(mappedBy="member")
-    private List<MemberAddress> addresses;
-    
+	}    
     
     
 	public String getCpf() {

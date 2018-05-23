@@ -11,9 +11,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "member_phone")
-//@Serializable(version=12345L)
+// @Serializable(version=12345L)
 public class MemberPhone implements Serializable {
 
 	public MemberPhone(String ddd, String phone, String extension, String note, int type, Member member) {
@@ -45,7 +47,7 @@ public class MemberPhone implements Serializable {
 	private String note;
 
 	private int type;
-	
+
 	@Override
 	public String toString() {
 		return "MemberPhone [id=" + id + ", ddd=" + ddd + ", phone=" + phone + ", extension=" + extension + ", note="
@@ -114,8 +116,9 @@ public class MemberPhone implements Serializable {
 
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name="member_id")
+	@JoinColumn(name = "member_id")
+	//@JsonManagedReference
+	 @JsonIgnore
 	private Member member;
-	
 
 }

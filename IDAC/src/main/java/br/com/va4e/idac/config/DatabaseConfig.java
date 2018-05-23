@@ -30,7 +30,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @ComponentScan(basePackages = "br.com.va4e.idac")
 @PropertySource("classpath:database-persistence.properties")
 @EnableJpaRepositories(enableDefaultTransactions = true)
-//@EnableJpaRepositories(basePackageClasses  = "br.com.va4e.idac", enableDefaultTransactions = false)
+//@EnableJpaRepositories(basePackageClasses  = ["br.com.va4e.idac.repository"], enableDefaultTransactions = true)
 @EnableTransactionManagement
 public class DatabaseConfig {
 
@@ -40,7 +40,6 @@ public class DatabaseConfig {
 	private Logger logger = Logger.getLogger(getClass().getName());
 
 	@Bean
-	@Primary
 	public DataSource DataSource() {
 
 		// create connection pool
@@ -81,7 +80,6 @@ public class DatabaseConfig {
 	}
 
 	@Bean
-	@Primary
 	public JpaVendorAdapter jpaVendorAdapter(){
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setDatabase(Database.MYSQL);
@@ -95,7 +93,6 @@ public class DatabaseConfig {
 	}
 
 	@Bean
-	@Primary
 	public EntityManagerFactory entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
 
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
@@ -108,7 +105,6 @@ public class DatabaseConfig {
 	}
 
 	@Bean
-	@Primary
 	public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(entityManagerFactory);

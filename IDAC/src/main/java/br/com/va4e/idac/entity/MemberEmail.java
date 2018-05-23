@@ -14,13 +14,13 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"email", "member_id"}), name = "member_email")
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "email", "member_id" }), name = "member_email")
 public class MemberEmail implements Serializable {
 
-    public MemberEmail(String email, int type, Member member, boolean isDefault, boolean isActive) {
+	public MemberEmail(String email, int type, Member member, boolean isDefault, boolean isActive) {
 		super();
 		this.email = email;
 		this.type = type;
@@ -56,7 +56,7 @@ public class MemberEmail implements Serializable {
 	public void setMember(Member member) {
 		this.member = member;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -72,31 +72,29 @@ public class MemberEmail implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
 	@NotNull
 	@Email
 	private String email;
-	
-	
+
 	@NotNull
 	private int type;
-	
+
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name="member_id")
+	@JoinColumn(name = "member_id")
+	//@JsonManagedReference
+	 @JsonIgnore
 	private Member member;
-	
-	
+
 	@NotNull
 	private boolean isDefault;
-	
-	
+
 	@NotNull
 	private boolean isActive;
-
 
 	public boolean isDefault() {
 		return isDefault;
@@ -113,18 +111,7 @@ public class MemberEmail implements Serializable {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	
 
-
-
-
-	
-
-	
-	
-	//TODO: Insert validation rules and localized messages
-	
+	// TODO: Insert validation rules and localized messages
 
 }
-
-

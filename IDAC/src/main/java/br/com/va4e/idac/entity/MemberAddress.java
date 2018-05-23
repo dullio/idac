@@ -11,10 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table( name = "member_address")
-public class MemberAddress implements Serializable{
-	
+@Table(name = "member_address")
+public class MemberAddress implements Serializable {
+
 	public MemberAddress() {
 		super();
 	}
@@ -35,33 +37,43 @@ public class MemberAddress implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-	
-	//@NotNull
-	//private int type;
-	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	// @NotNull
+	// private int type;
+
 	@NotNull
 	private String street;
-	
+
 	@NotNull
 	private String number;
-	
+
 	@NotNull
 	private String complement;
-	
-	
-	
+
 	private String cep;
-	
-	//private City city;
-	private String  city;
-	
-	//private State state;
+
+	// private City city;
+	private String city;
+
+	// private State state;
 	private String state;
-	
+
+	// private Country country;
+	private String country;
+
+	// private AddressType type;
+	private int type;
+
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "member_id")
+	// @JsonManagedReference
+	 @JsonIgnore
+	private Member member;
+
 	public Long getId() {
 		return id;
 	}
@@ -141,16 +153,5 @@ public class MemberAddress implements Serializable{
 	public void setMember(Member member) {
 		this.member = member;
 	}
-
-	//private Country country;
-	private String country;
-	
-	//private AddressType type;
-	private int type;
-	
-	@NotNull
-	@ManyToOne
-	@JoinColumn(name="member_id")
-	private Member member;
 
 }

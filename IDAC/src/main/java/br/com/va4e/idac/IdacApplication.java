@@ -1,14 +1,17 @@
 package br.com.va4e.idac;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import org.springframework.boot.context.properties.ConfigurationProperties;
 //import org.springframework.context.annotation.Import;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication
 //@ConfigurationProperties(prefix="app.datasource")//Get external properties
 //@Import(value=org.springframework.boot.context.properties.EnableConfigura3tionPropertiesImportSelector.class) //import a configuration class
 //@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+//@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 public class IdacApplication {
 
 	public static void main(String[] args) {

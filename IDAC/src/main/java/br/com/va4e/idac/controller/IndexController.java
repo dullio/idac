@@ -1,18 +1,24 @@
 package br.com.va4e.idac.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class IndexController {
-	
-	
-	
-	// @RequestMapping({"/", "/index"})
+
 	 @RequestMapping("/")
 	public String getIndex(){
 		
 		return "index";
 	}
+	 
+	 
+	 @GetMapping("/showMyLoginPage")
+	 public String showMyLoginPage() {
+		 
+		 
+		 return "login";
+	 }
 	
 }

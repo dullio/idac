@@ -8,50 +8,43 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	// add a reference to our security data source
-	
+
 	@Autowired
-	private DataSource securityDataSource;
-	
-	
+	private DataSource dataSource;
+
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		// use jdbc authentication ... oh yeah!!!
-		
-		auth.jdbcAuthentication().dataSource(securityDataSource);
-		
+		auth.jdbcAuthentication().passwordEncoder(bCryptPasswordEncoder).dataSource(dataSource);
+
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-			//.antMatchers("/index").anonymous()
-			.antMatchers("/**").anonymous()
-			//.antMatchers("/leaders/**").hasRole("MANAGER")
-			//.antMatchers("/systems/**").hasRole("ADMIN")
-			.and()
-			.formLogin()
-				.loginPage("/showMyLoginPage")
-				.loginProcessingUrl("/authenticateTheUser")
-				.permitAll()
-			.and()
-			.logout().permitAll()
-			.and()
-			.exceptionHandling().accessDeniedPage("/access-denied");
-		
+		//.anyRequest().authenticated()
+
+				// .antMatchers("/index").anonymous()
+				.antMatchers("/**").anonymous()
+				// .antMatchers("/member/**").hasRole("MANAGER")
+				// .antMatchers("/members/**").anonymous()
+				// .antMatchers("/leaders/**").hasRole("MANAGER")
+				// .antMatchers("/systems/**").hasRole("ADMIN")
+				.and().formLogin().loginPage("/showMyLoginPage").loginProcessingUrl("/authenticateTheUser").permitAll()
+				.and().logout().deleteCookies("remove").invalidateHttpSession(false).logoutUrl("/logout")
+				.logoutSuccessUrl("/").permitAll().and().exceptionHandling().accessDeniedPage("/error/403");
+
 	}
-		
+
 }
-
-
-
-
-
-
