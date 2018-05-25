@@ -7,5 +7,8 @@ import br.com.va4e.idac.entity.Member;
 
 @Repository
 public interface MemberRepository extends JpaRepository<Member,Long>{
+	
+	
+
 
 }

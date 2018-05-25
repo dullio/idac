@@ -14,13 +14,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	// add a reference to our security data source
-
 	@Autowired
 	private DataSource dataSource;
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@Autowired
+	private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -31,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
+		http.csrf().disable().exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint);
 		http.authorizeRequests()
 		//.anyRequest().authenticated()
 
@@ -46,5 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.logoutSuccessUrl("/").permitAll().and().exceptionHandling().accessDeniedPage("/error/403");
 
 	}
+	
+	
 
 }

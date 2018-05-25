@@ -1,11 +1,7 @@
 package br.com.va4e.idac;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.springframework.boot.context.properties.ConfigurationProperties;
-//import org.springframework.context.annotation.Import;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication
 //@ConfigurationProperties(prefix="app.datasource")//Get external properties
@@ -16,6 +12,8 @@ public class IdacApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(IdacApplication.class, args);
+		 
+	       
 	}
 	
 	/* TODO: 
@@ -38,4 +36,6 @@ public class IdacApplication {
 	 * Como persistir dados para databases embebed
 	 * A utilização dos perfis deve ser dinâmica e caso as bases de dados não exisatam, deverão ser criadas....
 	 */
+   
+
 }

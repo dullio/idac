@@ -2,6 +2,7 @@ package br.com.va4e.idac.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,8 +21,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = { "email", "member_id" }), name = "member_email")
 public class MemberEmail implements Serializable {
 
-	public MemberEmail(String email, int type, Member member, boolean isDefault, boolean isActive) {
-		super();
+	public MemberEmail(String email, int type, boolean isDefault, boolean isActive, Member member) {
+
 		this.email = email;
 		this.type = type;
 		this.member = member;
@@ -30,7 +31,7 @@ public class MemberEmail implements Serializable {
 	}
 
 	public MemberEmail() {
-		super();
+
 	}
 
 	public String getEmail() {
@@ -67,7 +68,7 @@ public class MemberEmail implements Serializable {
 
 	@Override
 	public String toString() {
-		return "MemberEmail [id=" + id + ", email=" + email + ", type=" + type + ", member=" + member + "]";
+		return "MemberEmail [id=" + id + ", email=" + email + ", type=" + type + "]";
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -84,10 +85,10 @@ public class MemberEmail implements Serializable {
 	private int type;
 
 	@NotNull
-	@ManyToOne
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
 	@JoinColumn(name = "member_id")
-	//@JsonManagedReference
-	 @JsonIgnore
+	// @JsonManagedReference
+	@JsonIgnore
 	private Member member;
 
 	@NotNull

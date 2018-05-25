@@ -2,6 +2,7 @@ package br.com.va4e.idac.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,12 +19,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class MemberAddress implements Serializable {
 
 	public MemberAddress() {
-		super();
+
 	}
 
+	// public MemberAddress(String street, String number, String complement, String
+	// cep, String city, String state, String country, int type, Member member)
 	public MemberAddress(String street, String number, String complement, String cep, String city, String state,
 			String country, int type, Member member) {
-		super();
+
 		this.street = street;
 		this.number = number;
 		this.complement = complement;
@@ -40,9 +43,6 @@ public class MemberAddress implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	// @NotNull
-	// private int type;
 
 	@NotNull
 	private String street;
@@ -68,10 +68,9 @@ public class MemberAddress implements Serializable {
 	private int type;
 
 	@NotNull
-	@ManyToOne
-	@JoinColumn(name = "member_id")
-	// @JsonManagedReference
-	 @JsonIgnore
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+	@JoinColumn(name = "member_id") // @JsonManagedReference
+	@JsonIgnore
 	private Member member;
 
 	public Long getId() {
@@ -144,6 +143,13 @@ public class MemberAddress implements Serializable {
 
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberAddress [id=" + id + ", street=" + street + ", number=" + number + ", complement=" + complement
+				+ ", cep=" + cep + ", city=" + city + ", state=" + state + ", country=" + country + ", type=" + type
+				+ "]";
 	}
 
 	public Member getMember() {

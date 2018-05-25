@@ -5,12 +5,15 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -41,7 +44,7 @@ public class Member implements Serializable {
 
 
 	public Member() {
-		super();
+
 	}
 
 
@@ -84,21 +87,48 @@ public class Member implements Serializable {
     @NotNull
     private boolean isActive;
     
+    @Temporal(TemporalType.DATE)
 	private Date birthday;
     
-    @OneToMany(mappedBy="member")
+    @OneToMany(mappedBy="member", cascade={CascadeType.ALL})
     //@JsonBackReference
     private List<MemberEmail> emails;
 
-    @OneToMany(mappedBy="member")
+    @OneToMany(mappedBy="member", cascade={CascadeType.ALL})
     //@JsonBackReference
     private List<MemberPhone> phones;
     
-	@OneToMany(mappedBy="member")
+	@OneToMany(mappedBy="member", cascade={CascadeType.ALL})
 	//@JsonBackReference
     private List<MemberAddress> addresses;
     
-    public boolean isActive() {
+    public void addEmail(MemberEmail email) {
+    	
+    	/*TODO:
+    	 * Check if email already exists 
+    	 */
+    	
+    	emails.add(email);
+    	
+    }
+	
+    public void addPhone(MemberPhone phone) {
+    	/*TODO:
+    	 * Check if phone already exists 
+    	 */
+    	phones.add(phone);
+    	
+    }
+	
+    public void addAddress(MemberAddress address) {
+    	/*TODO:
+    	 * Check if address already exists 
+    	 */
+    	addresses.add(address);
+    	
+    }
+    
+	public boolean isActive() {
 		return isActive;
 	}
 

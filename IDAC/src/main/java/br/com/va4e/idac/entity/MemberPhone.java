@@ -2,6 +2,7 @@ package br.com.va4e.idac.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,9 +18,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "member_phone")
 // @Serializable(version=12345L)
 public class MemberPhone implements Serializable {
-
+	
+	//public MemberPhone(String ddd, String phone, String extension, String note, int type, Member member)
 	public MemberPhone(String ddd, String phone, String extension, String note, int type, Member member) {
-		super();
+
 		this.ddd = ddd;
 		this.phone = phone;
 		this.extension = extension;
@@ -29,7 +31,7 @@ public class MemberPhone implements Serializable {
 	}
 
 	public MemberPhone() {
-		super();
+
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -47,11 +49,17 @@ public class MemberPhone implements Serializable {
 	private String note;
 
 	private int type;
+	
+	@NotNull
+	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name = "member_id")
+	 @JsonIgnore
+	private Member member;
 
 	@Override
 	public String toString() {
 		return "MemberPhone [id=" + id + ", ddd=" + ddd + ", phone=" + phone + ", extension=" + extension + ", note="
-				+ note + ", type=" + type + ", member=" + member + "]";
+				+ note + ", type=" + type + "]";
 	}
 
 	public Long getId() {
@@ -114,11 +122,6 @@ public class MemberPhone implements Serializable {
 		return serialVersionUID;
 	}
 
-	@NotNull
-	@ManyToOne
-	@JoinColumn(name = "member_id")
-	//@JsonManagedReference
-	 @JsonIgnore
-	private Member member;
+
 
 }
