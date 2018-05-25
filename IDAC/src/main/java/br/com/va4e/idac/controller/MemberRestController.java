@@ -2,6 +2,8 @@ package br.com.va4e.idac.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.data.domain.Example;
@@ -72,7 +74,7 @@ public class MemberRestController {
 
     @PostMapping("/member/")
    // 
-    public ResponseEntity<?> createMember(@RequestBody Member member, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<?> createMember(@Valid @RequestBody Member member, UriComponentsBuilder ucBuilder) {
  
 
     	//Check if username exists
