@@ -3,14 +3,12 @@ package br.com.va4e.idac.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,14 +17,17 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import br.com.va4e.idac.model.AuditModel;
+
 
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"firstName", "lastName"}), name = "member")
-public class Member implements Serializable {
-	
-    public Member(String firstName, String lastName, String userName, String cpf, String rg, String gender, String note,
+public class Member extends AuditModel implements Serializable {
+	/*public Member(String firstName, String lastName, String userName, String cpf, String rg, String gender, String note,
 			boolean isActive, Date birthday, List<MemberEmail> emails, List<MemberPhone> phones,
-			List<MemberAddress> addresses) {
+			List<MemberAddress> addresses)*/
+    public Member(String firstName, String lastName, String userName, String cpf, String rg, String gender, String note,
+			boolean isActive, Date birthday) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -37,9 +38,9 @@ public class Member implements Serializable {
 		this.note = note;
 		this.isActive = isActive;
 		this.birthday = birthday;
-		this.emails = emails;
+/*		this.emails = emails;
 		this.phones = phones;
-		this.addresses = addresses;
+		this.addresses = addresses;*/
 	}
 
 
@@ -68,7 +69,7 @@ public class Member implements Serializable {
     @Pattern(regexp = "[A-Za-z ]*", message = "must contain only letters and spaces")
     private String lastName;
 
-    
+    @Column(unique=true)
     @Pattern(regexp = "[A-Za-z]*", message = "must contain only letters")
     private String userName;
     
@@ -90,7 +91,7 @@ public class Member implements Serializable {
     @Temporal(TemporalType.DATE)
 	private Date birthday;
     
-    @OneToMany(mappedBy="member", cascade={CascadeType.ALL})
+   /* @OneToMany(mappedBy="member", cascade={CascadeType.ALL})
     //@JsonBackReference
     private List<MemberEmail> emails;
 
@@ -100,33 +101,33 @@ public class Member implements Serializable {
     
 	@OneToMany(mappedBy="member", cascade={CascadeType.ALL})
 	//@JsonBackReference
-    private List<MemberAddress> addresses;
+    private List<MemberAddress> addresses;*/
     
-    public void addEmail(MemberEmail email) {
+  /*  public void addEmail(MemberEmail email) {
     	
-    	/*TODO:
+    	TODO:
     	 * Check if email already exists 
-    	 */
+    	 
     	
     	emails.add(email);
     	
     }
 	
     public void addPhone(MemberPhone phone) {
-    	/*TODO:
+    	TODO:
     	 * Check if phone already exists 
-    	 */
+    	 
     	phones.add(phone);
     	
     }
 	
     public void addAddress(MemberAddress address) {
-    	/*TODO:
+    	TODO:
     	 * Check if address already exists 
-    	 */
+    	 
     	addresses.add(address);
     	
-    }
+    }*/
     
 	public boolean isActive() {
 		return isActive;
@@ -165,7 +166,7 @@ public class Member implements Serializable {
 	}
 
 
-	public List<MemberPhone> getPhones() {
+/*	public List<MemberPhone> getPhones() {
 		return phones;
 	}
 
@@ -173,7 +174,7 @@ public class Member implements Serializable {
 	public void setPhones(List<MemberPhone> phones) {
 		this.phones = phones;
 	}
-
+*/
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
@@ -200,7 +201,7 @@ public class Member implements Serializable {
 	}
 
 
-	public List<MemberAddress> getAddresses() {
+/*	public List<MemberAddress> getAddresses() {
 		return addresses;
 	}
 
@@ -217,7 +218,7 @@ public class Member implements Serializable {
 
 	public void setEmails(List<MemberEmail> emails) {
 		this.emails = emails;
-	}
+	}*/
 
 
 	public Long getId() {

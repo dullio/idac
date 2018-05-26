@@ -17,9 +17,11 @@ import org.hibernate.validator.constraints.Email;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.va4e.idac.model.AuditModel;
+
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = { "email", "member_id" }), name = "member_email")
-public class MemberEmail implements Serializable {
+public class MemberEmail  extends AuditModel implements Serializable {
 
 	public MemberEmail(String email, int type, boolean isDefault, boolean isActive, Member member) {
 

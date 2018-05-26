@@ -1,3 +1,4 @@
+
 package br.com.va4e.idac.entity;
 
 import java.io.Serializable;
@@ -10,13 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.va4e.idac.model.AuditModel;
+
 @Entity
-@Table(name = "member_address")
-public class MemberAddress implements Serializable {
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"street", "number", "complement", "cep", "city", "state", "country", "type", "member_id"}), name = "member_address")
+public class MemberAddress extends AuditModel implements Serializable {
 
 	public MemberAddress() {
 
@@ -70,7 +74,6 @@ public class MemberAddress implements Serializable {
 	@NotNull
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
 	@JoinColumn(name = "member_id") // @JsonManagedReference
-	@JsonIgnore
 	private Member member;
 
 	public Long getId() {

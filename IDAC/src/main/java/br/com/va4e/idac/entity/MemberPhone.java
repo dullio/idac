@@ -14,10 +14,12 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.va4e.idac.model.AuditModel;
+
 @Entity
 @Table(name = "member_phone")
 // @Serializable(version=12345L)
-public class MemberPhone implements Serializable {
+public class MemberPhone  extends AuditModel implements Serializable {
 	
 	//public MemberPhone(String ddd, String phone, String extension, String note, int type, Member member)
 	public MemberPhone(String ddd, String phone, String extension, String note, int type, Member member) {

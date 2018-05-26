@@ -35,6 +35,8 @@ public class IdacApplication {
 	 * MySQL/Derby/TomCat/Spring
 	 * Como persistir dados para databases embebed
 	 * A utilização dos perfis deve ser dinâmica e caso as bases de dados não exisatam, deverão ser criadas....
+	 * Como criar msg internacionalizada com variaveis no meio do texto
+	 * Nos campos de auditoria ver os campos que não podem ser nulos e/ou atualizados
 	 */
    
 

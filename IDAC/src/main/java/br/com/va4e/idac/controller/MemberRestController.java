@@ -73,7 +73,6 @@ public class MemberRestController {
     
 
     @PostMapping("/member/")
-   // 
     public ResponseEntity<?> createMember(@Valid @RequestBody Member member, UriComponentsBuilder ucBuilder) {
  
 
@@ -95,7 +94,7 @@ public class MemberRestController {
     		return new ResponseEntity<Member>(member, HttpStatus.CONFLICT);
     		
     	}
-    	memberRepository.saveAndFlush(member);
+    	memberRepository.save(member);
     	//memberRepository.save(member);
  
         HttpHeaders headers = new HttpHeaders();
@@ -118,10 +117,8 @@ public class MemberRestController {
         }
         
         member.setId(id);
- 
-        memberRepository.save(member);
-        
-        return new ResponseEntity<Member>(member, HttpStatus.OK);
+
+        return new ResponseEntity<Member>(memberRepository.save(member), HttpStatus.OK);
     }
     
     // ------------------- Delete a Member-----------------------------------------
@@ -135,7 +132,7 @@ public class MemberRestController {
             return new ResponseEntity<Long>(id ,HttpStatus.NOT_FOUND);
         }
         memberRepository.delete(id);
-        return new ResponseEntity<Member>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<Member>(HttpStatus.OK);
     }
     
 }

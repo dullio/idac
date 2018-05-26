@@ -9,6 +9,6 @@ import br.com.va4e.idac.entity.Member;
 public interface MemberRepository extends JpaRepository<Member,Long>{
 	
 	
-
+	Member findById(Long memberId);
 
 }
