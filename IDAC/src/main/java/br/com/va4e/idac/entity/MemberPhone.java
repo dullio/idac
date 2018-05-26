@@ -10,14 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.va4e.idac.model.AuditModel;
 
 @Entity
-@Table(name = "member_phone")
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"ddd", "phone", "extension", "type", "member_id"}), name = "member_phone")
 // @Serializable(version=12345L)
 public class MemberPhone  extends AuditModel implements Serializable {
 	
@@ -55,7 +54,7 @@ public class MemberPhone  extends AuditModel implements Serializable {
 	@NotNull
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name = "member_id")
-	 @JsonIgnore
+	 //@JsonIgnore
 	private Member member;
 
 	@Override

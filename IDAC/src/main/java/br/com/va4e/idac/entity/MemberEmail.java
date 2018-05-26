@@ -15,8 +15,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import br.com.va4e.idac.model.AuditModel;
 
 @Entity
@@ -90,7 +88,7 @@ public class MemberEmail  extends AuditModel implements Serializable {
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
 	@JoinColumn(name = "member_id")
 	// @JsonManagedReference
-	@JsonIgnore
+	//@JsonIgnore
 	private Member member;
 
 	@NotNull

@@ -154,13 +154,13 @@ public class MemberAddressRestController {
         memberAddress.setMember(currentMember);
         memberAddress.setId(addressId);
 
-        return  new ResponseEntity<MemberAddress>(memberAddressRepository.save(memberAddress), HttpStatus.CONFLICT);
+        return  new ResponseEntity<MemberAddress>(memberAddressRepository.save(memberAddress), HttpStatus.OK);
     }
     
     // ------------------- Delete a Member's Address-----------------------------------------
     
     @DeleteMapping("/member/{memberId}/address/{addressId}/")
-    public ResponseEntity<?> deleteMember(@PathVariable("addressId") long addressId) {
+    public ResponseEntity<?> deleteMemberAddress(@PathVariable("addressId") long addressId) {
 
         MemberAddress actualAddress = memberAddressRepository.findById(addressId);
         
