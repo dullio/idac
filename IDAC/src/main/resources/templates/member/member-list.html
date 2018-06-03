@@ -26,7 +26,15 @@
 
 </head>
 
-<body>
+<body
+      th:data-date-pattern="#{date.pattern}"
+      th:data-language="${#locale.language}"
+      th:data-context-path="@{/}"
+      th:data-image-path="@{/resources/images/}"
+      th:data-confirm="#{confirm.delete('@','@')}"
+      th:data-edit-url="@{/api/member}"
+      th:data-delete-url="@{/api/member}"
+      th:data-404-page="@{/error}">
 	<div th:replace="header :: header"></div>
 	<div class="container">
 		<div class="col-sm-12" align="center">

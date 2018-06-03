@@ -7,6 +7,9 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +40,25 @@ public class MemberRestController {
 	 
 	 @Autowired
 	 private Environment env;	
+	 
+	 
+	 
+	 //--------------------Filtered Members------------------------------------------------
+	 @PostMapping("/member/filtered/")
+	 public ResponseEntity<Page<Member>> getFilteredMembers(@RequestBody Member example, Pageable pageable ){
+		 
+		 
+		 Page<Member> members = memberRepository.getFilteredMembers(example, pageable);
+		 
+		 if (!members.hasContent()) {
+	            return new ResponseEntity<Page<Member>>(members,HttpStatus.NO_CONTENT);
+	            // You many decide to return HttpStatus.NOT_FOUND
+	        }
+	        return new ResponseEntity<Page<Member>>(members, HttpStatus.OK);
+
+		 
+		 
+	 }	 
 	
 	 // -------------------Retrieve All Members---------------------------------------------
 	 

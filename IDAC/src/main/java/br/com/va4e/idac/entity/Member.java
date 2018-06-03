@@ -23,11 +23,9 @@ import br.com.va4e.idac.model.AuditModel;
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"firstName", "lastName"}), name = "member")
 public class Member extends AuditModel implements Serializable {
-	/*public Member(String firstName, String lastName, String userName, String cpf, String rg, String gender, String note,
-			boolean isActive, Date birthday, List<MemberEmail> emails, List<MemberPhone> phones,
-			List<MemberAddress> addresses)*/
+
     public Member(String firstName, String lastName, String userName, String cpf, String rg, String gender, String note,
-			boolean isActive, Date birthday) {
+			boolean active, Date birthday) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -36,11 +34,8 @@ public class Member extends AuditModel implements Serializable {
 		this.rg = rg;
 		this.gender = gender;
 		this.note = note;
-		this.isActive = isActive;
+		this.active = active;
 		this.birthday = birthday;
-/*		this.emails = emails;
-		this.phones = phones;
-		this.addresses = addresses;*/
 	}
 
 
@@ -86,58 +81,21 @@ public class Member extends AuditModel implements Serializable {
     private String note;
     
     @NotNull
-    private boolean isActive;
+    private boolean active;
     
-    @Temporal(TemporalType.DATE)
+    public boolean isActive() {
+		return active;
+	}
+
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+
+	@Temporal(TemporalType.DATE)
 	private Date birthday;
     
-   /* @OneToMany(mappedBy="member", cascade={CascadeType.ALL})
-    //@JsonBackReference
-    private List<MemberEmail> emails;
-
-    @OneToMany(mappedBy="member", cascade={CascadeType.ALL})
-    //@JsonBackReference
-    private List<MemberPhone> phones;
-    
-	@OneToMany(mappedBy="member", cascade={CascadeType.ALL})
-	//@JsonBackReference
-    private List<MemberAddress> addresses;*/
-    
-  /*  public void addEmail(MemberEmail email) {
-    	
-    	TODO:
-    	 * Check if email already exists 
-    	 
-    	
-    	emails.add(email);
-    	
-    }
-	
-    public void addPhone(MemberPhone phone) {
-    	TODO:
-    	 * Check if phone already exists 
-    	 
-    	phones.add(phone);
-    	
-    }
-	
-    public void addAddress(MemberAddress address) {
-    	TODO:
-    	 * Check if address already exists 
-    	 
-    	addresses.add(address);
-    	
-    }*/
-    
-	public boolean isActive() {
-		return isActive;
-	}
-
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
 
 	public String getNote() {
 		return note;
@@ -165,17 +123,7 @@ public class Member extends AuditModel implements Serializable {
 		return birthday;
 	}
 
-
-/*	public List<MemberPhone> getPhones() {
-		return phones;
-	}
-
-
-	public void setPhones(List<MemberPhone> phones) {
-		this.phones = phones;
-	}
-*/
-
+    
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}    
@@ -199,26 +147,6 @@ public class Member extends AuditModel implements Serializable {
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
-
-
-/*	public List<MemberAddress> getAddresses() {
-		return addresses;
-	}
-
-
-	public void setAddresses(List<MemberAddress> addresses) {
-		this.addresses = addresses;
-	}
-
-
-	public List<MemberEmail> getEmails() {
-		return emails;
-	}
-
-
-	public void setEmails(List<MemberEmail> emails) {
-		this.emails = emails;
-	}*/
 
 
 	public Long getId() {

@@ -26,9 +26,17 @@ public class IdacApplication {
 	 * Atualizar i18n mensagens
 	 * Modelos, anotação hibernate/jpa
 	 * Sincronização com Contatos do Gmail.
+	 * Envio de emails atraves de modelos
+	 * Emails para aniversariantes
+	 * Aniversariantes do mês
+	 * escolha do tema
+	 * escolha idioma
+	 * confirmar recebimento de emails
+	 * retirar da lista de e-mails destino mas manter cadastro/ tipo newsletters
 	 * Login com Facebook e/ou G+
 	 * CRUD e repositorios para modelos
 	 * Validação dos formulários
+	 * utilizat temas e idiomas
 	 * Customização das páginas de erro! Whitelabel Error Page
 	 * Log em arquivo e console unico (Log4J e AOP)
 	 * Definir perfis para os diferentes tipos de base e servidores
@@ -37,6 +45,10 @@ public class IdacApplication {
 	 * A utilização dos perfis deve ser dinâmica e caso as bases de dados não exisatam, deverão ser criadas....
 	 * Como criar msg internacionalizada com variaveis no meio do texto
 	 * Nos campos de auditoria ver os campos que não podem ser nulos e/ou atualizados
+	 * layout.html > head, header, body, table, form, nav bar, side, footer, site map, 
+	 * css
+	 * endereo pelo cep
+	 * responsivo
 	 */
    
 
