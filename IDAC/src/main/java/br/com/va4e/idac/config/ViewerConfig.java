@@ -8,7 +8,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 public class ViewerConfig {
 
-	@Bean
+/*	@Bean
 	public ViewResolver viewResolver() {
 
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -17,5 +17,5 @@ public class ViewerConfig {
 		viewResolver.setSuffix(".html");
 
 		return viewResolver;
-	}
+	}*/
 }

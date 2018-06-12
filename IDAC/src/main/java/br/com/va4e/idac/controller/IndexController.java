@@ -13,6 +13,15 @@ public class IndexController {
 		return "index";
 	}
 
+	
+	
+	
+	@RequestMapping("/test")
+	public String getTest() {
+
+		return "layout";
+	}
+	
 	@GetMapping("/showMyLoginPage")
 	public String showMyLoginPage() {
 

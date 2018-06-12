@@ -49,6 +49,8 @@ public class IdacApplication {
 	 * css
 	 * endereo pelo cep
 	 * responsivo
+	 * resppnsivo smart, tablet, pc
+	 * funcionamento com e sem javascript
 	 */
    
 
