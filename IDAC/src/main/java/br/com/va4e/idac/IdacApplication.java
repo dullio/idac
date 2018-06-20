@@ -24,6 +24,8 @@ public class IdacApplication {
 	 * Auditoria
 	 * dataCriacao dataAtuaizacao e ultimo usuário
 	 * Atualizar i18n mensagens
+	 * Ciar páginas de erro customizadas
+	 * Definir profiles local e remoto jar/war
 	 * Modelos, anotação hibernate/jpa
 	 * Sincronização com Contatos do Gmail.
 	 * Envio de emails atraves de modelos

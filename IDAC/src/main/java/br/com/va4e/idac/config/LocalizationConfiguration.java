@@ -64,7 +64,7 @@ public class LocalizationConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**")
-                .addResourceLocations("/resources/static/", "/webjars/")
+                .addResourceLocations("/resources/**", "/webjars/")
                 .setCacheControl(
                         CacheControl.maxAge(30L, TimeUnit.DAYS).cachePublic())
                 .resourceChain(true)

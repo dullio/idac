@@ -10,7 +10,7 @@ public class IndexController {
 	@RequestMapping("/")
 	public String getIndex() {
 
-		return "index";
+		return "/member/members";
 	}
 
 	
